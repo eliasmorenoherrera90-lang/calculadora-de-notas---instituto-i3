@@ -4,6 +4,8 @@ const resultado = document.querySelector('#resultado');
 formulario.addEventListener('submit', (evento) => {
   evento.preventDefault();
 
+  const estudiante = document.querySelector('#estudiante').value.trim();
+  
   const notas = [
     Number(document.querySelector('#nota1').value),
     Number(document.querySelector('#nota2').value),
@@ -19,6 +21,6 @@ formulario.addEventListener('submit', (evento) => {
 
   const promedio = notas.reduce((total, nota) => total + nota, 0) / notas.length;
   const estado = promedio >= 3 ? 'Aprobado' : 'Reprobado';
-  resultado.textContent = `Promedio: ${promedio.toFixed(2)} — ${estado}`;
+  resultado.textContent = `${estudiante}: Promedio ${promedio.toFixed(2)} — ${estado}`;
   resultado.className = `resultado ${promedio >= 3 ? 'aprobado' : 'reprobado'}`;
 });
